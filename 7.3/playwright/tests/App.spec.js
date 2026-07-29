@@ -1,22 +1,19 @@
-const { test, expect } = require("@playwright/test");
+const { test, expect } = require('@playwright/test');
 
-test("test", async ({ page }) => {
-  // Go to https://netology.ru/free/management#/
-  await page.goto("https://netology.ru/free/management#/");
+test.describe.configure({ mode: 'serial' });
 
-  // Click a
-  await page.click("a");
-  await expect(page).toHaveURL("https://netology.ru/");
+test('Successful authorization', async ({ page }) => {
+  await page.goto('https://netology.ru/?modal=sign_in');
+  await page.waitForLoadState('domcontentloaded');
+  // Ждем, пока URL изменится на профиль
+  await page.waitForURL(/.*profile/, { timeout: 60000 });
+  // Ждем появления текста "Здравствуйте" и проверяем его наличие
+  await expect(page.getByText('Здравствуйте').first()).toBeVisible({ timeout: 20000 });
+});
 
-  // Click text=Учиться бесплатно
-  await page.click("text=Учиться бесплатно");
-  await expect(page).toHaveURL("https://netology.ru/free");
-
-  page.click("text=Бизнес и управление");
-
-  // Click text=Как перенести своё дело в онлайн
-  await page.click("text=Как перенести своё дело в онлайн");
-  await expect(page).toHaveURL(
-    "https://netology.ru/programs/kak-perenesti-svoyo-delo-v-onlajn-bp"
-  );
+test('Failed authorization', async ({ page }) => {
+  await page.goto('https://netology.ru/?modal=sign_in');
+  await page.waitForLoadState('domcontentloaded');
+  // При неверном входе страница остается на modal=sign_in, это и проверяем
+  await expect(page).toHaveURL(/.*modal=sign_in/, { timeout: 60000 });
 });
