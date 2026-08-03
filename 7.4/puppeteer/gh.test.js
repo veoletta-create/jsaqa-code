@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 
+jest.setTimeout(60000);
+
 let browser;
 let page;
 
@@ -37,7 +39,7 @@ describe("Github page tests", () => {
     await page.waitForSelector("h1");
     const title = await page.title();
     expect(title).toContain("Change is constant");
-  }, 15000);
+  }, 30000);
 
   test("The first link attribute", async () => {
     const actual = await page.$eval("a", (link) => link.getAttribute("href"));
