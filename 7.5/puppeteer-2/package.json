@@ -1,19 +1,35 @@
 {
-  "name": "jsaqa_3_3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "cucumber": "cucumber-js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "jest": "^27.3.1",
-    "jest-puppeteer": "^6.0.0",
-    "puppeteer": "^13.3.2",
-    "chai": "^4.3.4",
-    "cucumber": "^7.0.0-rc.0"
-  }
+    "name": "jsaqa.hw5",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watchAll --detectOpenHandles",
+        "cucumber": "cucumber-js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vOrzee/jsaqa.hw5.git"
+    },
+    "author": "Roman Leshin",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/vOrzee/jsaqa.hw5/issues"
+    },
+    "homepage": "https://github.com/vOrzee/jsaqa.hw5#readme",
+    "dependencies": {
+        "chai": "^5.2.0",
+        "cucumber": "^6.0.7",
+        "jest": "^27.3.1",
+        "jest-puppeteer": "^6.0.0",
+        "puppeteer": "^13.3.2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.23.0",
+        "eslint": "^9.23.0",
+        "eslint-config-prettier": "^10.1.1",
+        "eslint-plugin-prettier": "^5.2.5",
+        "globals": "^16.0.0",
+        "prettier": "^3.5.3"
+    }
 }
