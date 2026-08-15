@@ -1,0 +1,8 @@
+{
+   "bookingHall": ".buying > .acceptin-button",
+   "checkTicket": ".ticket > .ticket__info-wrapper > .acceptin-button"
+
+   
+   
+
+}
