@@ -30,9 +30,8 @@ describe("Booking tickets tests", () => {
         cy.visit("http://qamid.tmweb.ru");
         cy.contains(".movie__title", movieTitle).should("be.visible").click();
 
-        cy.get(".movie-seances__time").first().click();
+        cy.get(".movie-seances__time").first().click({ force: true });
 
-        // Ищем первое свободное место и кликаем по нему
         cy.get(".buying-scheme__chair:not(.buying-scheme__chair_taken)").first().click();
 
         cy.get(booking.bookingHall).click();
