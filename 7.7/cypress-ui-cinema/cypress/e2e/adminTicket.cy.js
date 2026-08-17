@@ -20,6 +20,7 @@ describe("Booking tickets tests", () => {
     });
 
     cy.get('.conf-step__title').first().click({ force: true });
+
     cy.get('.conf-step__movie-title', { timeout: 20000 }).should('exist');
 
     cy.get('.conf-step__movie-title')
@@ -29,10 +30,11 @@ describe("Booking tickets tests", () => {
         cy.visit("http://qamid.tmweb.ru");
         cy.contains(".movie__title", movieTitle).should("be.visible").click();
 
-        // Находим первую кликабельную кнопку сеанса (без класса disabled или с pointer-events: auto)
-        cy.get(".movie-seances__time").not('.acceptin-button-disabled').first().click();
+        cy.get(".movie-seances__time").first().click();
 
-        cy.get(":nth-child(7) > :nth-child(9)").click();
+        // Ищем первое свободное место и кликаем по нему
+        cy.get(".buying-scheme__chair:not(.buying-scheme__chair_taken)").first().click();
+
         cy.get(booking.bookingHall).click();
       });
   });
